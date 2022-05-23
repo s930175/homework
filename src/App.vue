@@ -1,10 +1,18 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/product">Product</router-link> |
+    <router-link to="/cart">Cart</router-link>
   </nav>
-  <router-view/>
+  <router-view @setData="setData"/>
 </template>
+<script>
+export default {
+  methods:{
+
+  }
+}
+</script>
 
 <style lang="less">
 #app {
@@ -16,14 +24,16 @@
 }
 
 nav {
-  padding: 30px;
+  padding: 10px;
 
   a {
     font-weight: bold;
     color: #2c3e50;
+    text-decoration: none;
+    text-shadow: #aaa;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #aaa;
     }
   }
 }
