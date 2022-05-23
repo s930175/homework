@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Product from '../views/ProductView.vue'
 import Cart from '../views/CartView.vue'
+import Login from '../views/LoginView.vue'
 
 const routes = [
   {
@@ -15,13 +16,23 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component:Product
+    component: Product
   },
   {
     path: '/cart',
     name: 'Cart',
     component: Cart
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  //TODO:404
+  // {
+  //   path: '*',
+  //   redirect: '/',
+  // }
 ]
 
 const router = createRouter({

@@ -2,7 +2,10 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/product">Product</router-link> |
-    <router-link to="/cart">Cart</router-link>
+    <router-link to="/cart">Cart</router-link> |
+    <router-link to="/login">Login</router-link> |
+    <!-- TODO:logout畫面 -->
+    <router-link to="/logiut">Logout</router-link>
   </nav>
   <router-view @setData="setData"/>
 </template>
@@ -24,7 +27,6 @@ export default {
 }
 
 nav {
-  padding: 10px;
 
   a {
     font-weight: bold;

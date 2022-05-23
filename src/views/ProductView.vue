@@ -22,7 +22,8 @@ export default {
   },
   data() {
     return {
-      choosenProduct: [],
+      // choosenProduct: localStorage.setItem("choosenProduct") || [],
+      // choosenProduct:[],
       productFilter: "all",
       imgs: [
         { id: 1, src: "../img/01盾勇.jpg", desc: "001", price: 1800 },
@@ -44,6 +45,7 @@ export default {
           return this.imgs;
           break;
         case "buy":
+          // localStorage.setItem()
           return this.imgs.filter((item) => item.count > 0);
       }
       console.log(item);
