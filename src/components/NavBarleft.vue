@@ -1,5 +1,5 @@
 <template>
-  <h1>This is an Product page</h1>
+  <h1>GOD SMILE</h1>
   <div class="btn">
     <button @click="change(now - 1)" class="btnPrev">
       <i class="fa-solid fa-angle-left"></i>
@@ -9,8 +9,8 @@
     </button>
   </div>
   <div class="card-slider">
-    <transition-group>
-      <div class="card-slider-items" name="flip-list-move">
+    <div class="card-slider-items">
+      <transition-group name="flip-list">
         <div
           class="card-slider-item"
           v-for="item in showImages"
@@ -19,8 +19,8 @@
         >
           <a href="javascript:;"><img :src="item.src" /></a>
         </div>
-      </div>
-    </transition-group>
+      </transition-group>
+    </div>
   </div>
   <!-- <Describe :parentDesc="item.desc"></Describe> -->
 </template>
@@ -108,7 +108,7 @@ export default {
 .card-slider-items {
   display: flex;
   width: 100%;
-  margin-left: calc(-1*25% * 2.5);
+  margin-left: calc(-25% * 2.5);
 }
 .card-slider-item {
   z-index: 1;
@@ -134,6 +134,5 @@ img {
 .flip-list-move {
   transition: transform 0.5s;
 }
-
 </style>
 

@@ -38,7 +38,8 @@ export default {
       }
     },
     addCart(){
-        alert(`成功加入購物車，數量:${this.count}`)
+        alert(`成功加入購物車，數量:${this.count}`);
+        localStorage.setItem (this.count);
     }
   },
   props: ["id", "price", "src"],
