@@ -22,7 +22,7 @@
       </li>
       <nav class="main-nav">
         <router-link to="/">首頁</router-link>
-        <router-link to="/" class="login d-show">最新消息</router-link>
+        <router-link to="/" class="login d-show">公告</router-link>
         <router-link to="/product">產品</router-link>
         <router-link to="/cart">訂單</router-link>
         <router-link to="/login" class="login d-show">預購</router-link>
@@ -70,7 +70,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 
 li {
   list-style: none;
@@ -176,5 +176,18 @@ li {
 .main-header .header-search input {
   border-radius: 200px 0 0 200px;
   border-right: none;
+}
+.main-nav {
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+    text-shadow: #aaa;
+
+    &.router-link-exact-active {
+      color: #aaa;
+    }
+  }
 }
 </style>

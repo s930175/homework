@@ -18,7 +18,7 @@ import FooterView from "./components/FooterView.vue"
 export default {
   components: {
     NavbarView,
-    FooterView
+    FooterView,
   },
   methods:{
 

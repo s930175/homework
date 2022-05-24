@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Product from '../views/ProductView.vue'
-import Cart from '../views/CartView.vue'
+import Cart from '../components/CartView.vue'
 import Login from '../views/LoginView.vue'
 
 const routes = [

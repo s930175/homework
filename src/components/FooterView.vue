@@ -30,7 +30,7 @@
             </div>
             <div class="footer-item footer-sub">
                 <h4>訂閱電子報</h4>
-                <p style="color: #fff;">獲得更多好康優惠資訊</p>
+                <p style="color: #000;">獲得更多好康優惠資訊</p>
                 <form action="">
                     <input type="email" name="" placeholder="email" required>
                     <input type="submit" value="訂閱">

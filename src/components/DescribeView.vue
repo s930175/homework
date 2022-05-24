@@ -10,7 +10,7 @@
         <button @click="reductCount">-</button>
         <span>{{ count }}</span>
         <button @click="addCount">+</button>
-        <button @click="addCart">加到購物車</button>
+        <button @click="addCart">加到收藏</button>
       </div>
     </div>
   </div>

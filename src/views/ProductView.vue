@@ -1,6 +1,6 @@
 <template>
   <a @click="productFilter = 'all'" href="javascript:;">所有商品</a> |
-  <a @click="productFilter = 'buy'" href="javascript:;">點選商品</a>
+  <a @click="productFilter = 'buy'" href="javascript:;">收藏商品</a>
   <Carouse></Carouse>
   <Describe
     @choosen="putIntoCart"
@@ -9,21 +9,20 @@
     :="item"
   >
   </Describe>
-  <Modal v-for="item in showProducts" :key="item.id" :="item"></Modal>
-
+    <router-link to="/cart">結帳</router-link>
   <!-- <router-link to="/cart"><a @click="productFilter='buy'" href="javascript:;">結帳</a></router-link> -->
 </template>
 
 <script>
 import Describe from "../components/DescribeView.vue";
 import Carouse from "../components/CarouselView.vue";
-import Modal from "../components/ModalView.vue";
+import Cart from "../components/CartView.vue";
 
 export default {
   components: {
     Describe,
     Carouse,
-    Modal,
+    Cart,
   },
   data() {
     return {
@@ -105,6 +104,7 @@ export default {
           break;
         case "buy":
           // localStorage.setItem()
+
           return this.imgs.filter((item) => item.count > 0);
       }
       console.log(item);
