@@ -32,7 +32,7 @@
         </div>
         <div class="btn-group">
           <button class="btn" @click="login">登入</button>
-          <button class="btn">取消</button>
+          <button class="btn" @click="logout">取消</button>
         </div>
       </form>
     </div>
@@ -60,6 +60,10 @@ export default {
         $("#eyes").addClass("fa-eye");
       }
     },
+    logout() {
+      //localStorage.removeItem("token");
+      this.$router.push("/product");
+    },
     login() {
       //驗證帳號
       let valUserName = this.userName;
@@ -67,15 +71,15 @@ export default {
       let dotpos = valUserName.lastIndexOf(".");
       //驗證密碼
       let valUserPassword = this.userPassword;
-      let reg = /[^a-z0-9]+/;
+      let reg = /\d[a-zA-Z]{2}/;
       let newPpassword = reg.test(valUserPassword);
       //輸入的數據必須包含@ 符號和點號(.)。 同時，@ 不可以是郵件地址的首字符，並且@ 之後需有至少一個點號
       if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= valUserName.length) {
         alert("請輸入有效email");
       } else if (valUserPassword.length < 6) {
-        alert("長度太短");
+        confirm("長度太短");
       } else if (valUserPassword.length > 12) {
-        alert("長度太長");
+        confirm("長度太長");
         //TODO:驗證密碼
       } else if (newPpassword == false) {
         alert("密碼格式不符(需6~12英數字混合)");
@@ -85,12 +89,7 @@ export default {
       }
     },
   },
-  logout() {
-    localStorage.removeItem("token");
-    this.$router.push("/login");
-  },
 };
-
 </script>
 
 <style scoped>
@@ -98,7 +97,7 @@ export default {
   margin: 0;
   padding: 0;
   list-style: none;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   background: url("https://picsum.photos/1440/1440?random1") no-repeat center
     center / cover;

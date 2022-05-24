@@ -1,24 +1,29 @@
 <template>
-  <NavBarleft></NavBarleft>
+  <a @click="productFilter = 'all'" href="javascript:;">所有商品</a> |
+  <a @click="productFilter = 'buy'" href="javascript:;">點選商品</a>
+  <Carouse></Carouse>
   <Describe
     @choosen="putIntoCart"
     v-for="item in showProducts"
     :key="item.id"
     :="item"
-  ></Describe>
-  <a @click="productFilter = 'all'" href="javascript:;">所有商品</a>
-  <a @click="productFilter = 'buy'" href="javascript:;">結帳</a>
+  >
+  </Describe>
+  <Modal v-for="item in showProducts" :key="item.id" :="item"></Modal>
+
   <!-- <router-link to="/cart"><a @click="productFilter='buy'" href="javascript:;">結帳</a></router-link> -->
 </template>
 
 <script>
 import Describe from "../components/DescribeView.vue";
-import NavBarleft from "../components/NavBarleft.vue";
+import Carouse from "../components/CarouselView.vue";
+import Modal from "../components/ModalView.vue";
 
 export default {
   components: {
     Describe,
-    NavBarleft,
+    Carouse,
+    Modal,
   },
   data() {
     return {
@@ -26,15 +31,69 @@ export default {
       // choosenProduct:[],
       productFilter: "all",
       imgs: [
-        { id: 1, src: "../img/01盾勇.jpg", desc: "001", price: 1800 },
-        { id: 2, src: "../img/02太空機器人.jpg", desc: "002", price: 1500 },
-        { id: 3, src: "../img/03雛田.jpg", desc: "003", price: 1490 },
-        { id: 4, src: "../img/04lancer.jpg", desc: "004", price: 2000 },
-        { id: 5, src: "../img/05喜多川.jpg", desc: "005", price: 1750 },
-        { id: 6, src: "../img/06伏黑.jpg", desc: "006", price: 1660 },
-        { id: 7, src: "../img/07艾連.jpg", desc: "007", price: 2100 },
-        { id: 8, src: "../img/08波吉.jpg", desc: "008", price: 1800 },
-        { id: 9, src: "../img/10惠惠.jpg", desc: "009", price: 1850 },
+        {
+          id: 1,
+          name: "拉芙塔莉雅",
+          src: "../img/01盾勇.jpg",
+          desc: "001",
+          price: 1800,
+        },
+        {
+          id: 2,
+          name: "太空機器人",
+          src: "../img/02太空機器人.jpg",
+          desc: "002",
+          price: 1500,
+        },
+        {
+          id: 3,
+          name: "日向雛田",
+          src: "../img/03雛田.jpg",
+          desc: "003",
+          price: 1490,
+        },
+        {
+          id: 4,
+          name: "阿爾托莉亞",
+          src: "../img/04lancer.jpg",
+          desc: "004",
+          price: 2000,
+        },
+        {
+          id: 5,
+          name: "喜多川佑介",
+          src: "../img/05喜多川.jpg",
+          desc: "005",
+          price: 1750,
+        },
+        {
+          id: 6,
+          name: "伏黑惠",
+          src: "../img/06伏黑.jpg",
+          desc: "006",
+          price: 1660,
+        },
+        {
+          id: 7,
+          name: "艾連葉卡",
+          src: "../img/07艾連.jpg",
+          desc: "007",
+          price: 2100,
+        },
+        {
+          id: 8,
+          name: "波吉",
+          src: "../img/08波吉.jpg",
+          desc: "008",
+          price: 1800,
+        },
+        {
+          id: 9,
+          name: "空條承太郎",
+          src: "../img/10承太郎.jpg",
+          desc: "009",
+          price: 1850,
+        },
       ],
     };
   },
@@ -66,7 +125,6 @@ export default {
       });
       //console.log(this.imgs)
     },
-
   },
   watch: {},
   mouted() {
@@ -80,6 +138,11 @@ export default {
 img {
   width: 100%;
   border: transparent;
+}
+a{
+  text-decoration: none;
+  color:black;
+  font-family:Arial, Helvetica, sans-serif
 }
 </style>
 

@@ -1,15 +1,17 @@
 <template>
   <div class="d-inline-block">
-    <div class="card me-3 mb-3 ">
+    <div class="card me-3 mb-3">
       <img :src="src" alt="" />
       <div>
-          <p>價錢: {{ price }}</p>
-      <button @click="reductCount">-</button>
-      <span>{{ count }}</span>
-      <button @click="addCount">+</button>
-      <button @click="addCart">加到購物車</button>
+        <p>
+          黏土人 <strong>{{ name }}</strong>
+        </p>
+        <p>價錢: {{ price }}</p>
+        <button @click="reductCount">-</button>
+        <span>{{ count }}</span>
+        <button @click="addCount">+</button>
+        <button @click="addCart">加到購物車</button>
       </div>
-      
     </div>
   </div>
 </template>
@@ -20,29 +22,32 @@ export default {
       count: 0,
     };
   },
-  methods:{
-      reductCount() {
+  methods: {
+    reductCount() {
       if (this.count > 0) {
         this.count--;
-        this.$emit('choosen', 
-        {id:this.id,
-        count:this.count})
+        this.$emit("choosen", { id: this.id, count: this.count });
       }
     },
-    addCount(){
+    addCount() {
       if (this.count < 5) {
         this.count++;
-        this.$emit('choosen', 
-        {id:this.id,
-        count:this.count})
+        this.$emit("choosen", { id: this.id, count: this.count });
       }
     },
-    addCart(){
-        alert(`成功加入購物車，數量:${this.count}`);
-        localStorage.setItem (this.count);
-    }
+    addCart() {
+      alert(`成功加入購物車，數量:${this.count}`);
+      localStorage.setItem("ProductCount", { id: this.id, count: this.count });
+      // this.count = localStorage.getItem('ProductCount')
+    },
   },
-  props: ["id", "price", "src"],
+  computed: {
+    //TODO:儲存到localStorage裡
+    ProductCount() {
+      localStorage.getItem("ProductCount");
+    },
+  },
+  props: ["id", "price", "src", "name", "desc"],
 };
 </script>
 
@@ -52,7 +57,8 @@ img {
   border: 1px solid #aaaaaa;
   border-radius: 30px;
 }
-.card{
+.card {
   vertical-align: middle;
+  padding: 10px 5px;
 }
 </style>

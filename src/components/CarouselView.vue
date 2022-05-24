@@ -1,13 +1,4 @@
 <template>
-  <h1>GOD SMILE</h1>
-  <div class="btn">
-    <button @click="change(now - 1)" class="btnPrev">
-      <i class="fa-solid fa-angle-left"></i>
-    </button>
-    <button @click="change(now + 1)" class="btnNext">
-      <i class="fa-solid fa-angle-right"></i>
-    </button>
-  </div>
   <div class="card-slider">
     <div class="card-slider-items">
       <transition-group name="flip-list">
@@ -17,22 +8,30 @@
           :key="item.id"
           :data-id="item.id"
         >
-          <a href="javascript:;"><img :src="item.src" /></a>
+          <a><img :src="item.src"/></a>
         </div>
       </transition-group>
     </div>
   </div>
   <!-- <Describe :parentDesc="item.desc"></Describe> -->
+  <div class="btn">
+    <button @click="change(now - 1)" class="btnPrev">
+      <i class="fa-solid fa-angle-left"></i>
+    </button>
+    <button @click="change(now + 1)" class="btnNext">
+      <i class="fa-solid fa-angle-right"></i>
+    </button>
+  </div>
 </template>
 
 <script>
-import Describe from "../components/DescribeView.vue";
-import NavBarleft from "../components/NavBarleft.vue";
+import Describe from "./DescribeView.vue";
+import Carouse from "./CarouselView.vue";
 
 export default {
   components: {
     Describe,
-    NavBarleft,
+    Carouse,
   },
   data() {
     return {
@@ -40,15 +39,15 @@ export default {
       now: 0,
       count: 0,
       imgs: [
-        { id: 1, src: "../img/01盾勇.jpg", desc: "001", price: 1800 },
-        { id: 2, src: "../img/02太空機器人.jpg", desc: "002", price: 1500 },
-        { id: 3, src: "../img/03雛田.jpg", desc: "003", price: 1490 },
-        { id: 4, src: "../img/04lancer.jpg", desc: "004", price: 2000 },
-        { id: 5, src: "../img/05喜多川.jpg", desc: "005", price: 1750 },
-        { id: 6, src: "../img/06伏黑.jpg", desc: "006", price: 1660 },
-        { id: 7, src: "../img/07艾連.jpg", desc: "007", price: 2100 },
-        { id: 8, src: "../img/08波吉.jpg", desc: "008", price: 1800 },
-        { id: 9, src: "../img/10惠惠.jpg", desc: "009", price: 1850 },
+      { id: 1, name:"拉芙塔莉雅", src: "../img/01盾勇.jpg", desc: "001", price: 1800 },
+        { id: 2, name:"太空機器人", src: "../img/02太空機器人.jpg", desc: "002", price: 1500 },
+        { id: 3, name:"日向雛田", src: "../img/03雛田.jpg", desc: "003", price: 1490 },
+        { id: 4, name:"阿爾托莉亞", src: "../img/04lancer.jpg", desc: "004", price: 2000 },
+        { id: 5, name:"喜多川佑介", src: "../img/05喜多川.jpg", desc: "005", price: 1750 },
+        { id: 6, name:"伏黑惠", src: "../img/06伏黑.jpg", desc: "006", price: 1660 },
+        { id: 7, name:"艾連葉卡", src: "../img/07艾連.jpg", desc: "007", price: 2100 },
+        { id: 8, name:"波吉", src: "../img/08波吉.jpg", desc: "008", price: 1800 },
+        { id: 9, name:"空條承太郎", src: "../img/10承太郎.jpg", desc: "009", price: 1850 },
       ],
       count: 0,
     };
@@ -60,7 +59,7 @@ export default {
       const total = this.imgs.length;
       let count;
       if (total > 0) {
-        while (ary.length < 10 + 4) {
+        while (ary.length < 9 + 4) {
           count = Math.floor(ary.length / total);
           for (let i = 0; i < total; i++) {
             ary.push({
@@ -94,12 +93,16 @@ export default {
   watch: {},
   mouted() {
     //用來塞入BS的JS
-    (function () {});
+    ;(function () {});
   },
 };
 </script>
 
 <style scoped>
+button{
+  border: none;
+  background-color: transparent;
+}
 .card-slider {
   display: flex;
   width: 100%;
