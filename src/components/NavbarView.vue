@@ -22,11 +22,11 @@
       </li>
       <nav class="main-nav">
         <router-link to="/">首頁</router-link>
-        <router-link to="/" class="login d-show">公告</router-link>
+        <router-link to="/post" class="login d-show">公告</router-link>
         <router-link to="/product">產品</router-link>
         <router-link to="/cart">訂單</router-link>
-        <router-link to="/login" class="login d-show">預購</router-link>
-        <router-link to="/login" class="login d-show">新品</router-link>
+        <router-link to="/pre" class="login d-show">預購</router-link>
+        <router-link to="/add" class="login d-show">加入會員</router-link>
       </nav>
       <form class="header-search" action="">
         <input

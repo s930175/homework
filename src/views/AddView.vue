@@ -8,7 +8,22 @@
         method="post"
         @submit.prevent="login"
       >
-        <h2>會員登入</h2>
+        <h2>加入會員</h2>
+        <div class="d-flex">
+          <div class="add">
+            <label for="user-name">會員名稱</label>
+            <input type="text" id="user-name" value="Mark" />
+          </div>
+          <div class="add2">
+            <br /><br />
+            <select>
+              <option>請選擇你的性別</option>
+              <option>男</option>
+              <option>女</option>
+              <option>其他</option>
+            </select>
+          </div>
+        </div>
         <div class="group">
           <label for="user-id">帳號</label>
           <input
@@ -30,8 +45,12 @@
           />
           <i id="eyes" class="fa-solid fa-eye" @click="toggle_eye(eye)"></i>
         </div>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <p>訂閱電子報</p>
+        </div>
         <div class="btn-group">
-          <button class="btn" @click="login">登入</button>
+          <button class="btn" @click="login">加入</button>
           <button class="btn" @click="logout">取消</button>
         </div>
       </form>
@@ -84,10 +103,10 @@ export default {
         alert("密碼格式不符(需6~12英數字混合)");
       } else {
         // localStorage.setItem("token", "ImLogin");
-        alert(`Hi~${valUserName}`)
-        this.$router.push("/");
+        alert("歡迎加入!!!");
+        localStorage.setItem("token", valUserName);
+        this.$router.push("/login");
       }
-
     },
   },
 };
@@ -108,7 +127,7 @@ export default {
 
 .login {
   width: 600px;
-  height: 400px;
+  height: 450px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   border: 5px solid #fff;
@@ -124,7 +143,18 @@ export default {
   width: 400px;
   color: #fff;
 }
-
+.add {
+  padding: 10px;
+}
+.add2 {
+  padding: 0 0 0 10px;
+}
+select {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #aaa;
+  border-radius: 6px;
+}
 .form h2 {
   margin-bottom: 20px;
   padding-bottom: 10px;
@@ -132,7 +162,7 @@ export default {
 }
 
 .form .group {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .form h2 label {
@@ -145,9 +175,20 @@ export default {
   line-height: 3;
   border-radius: 5px;
 }
+.checkbox {
+  display: flex;
+}
+.checkbox p {
+  width: 100px;
+}
+.checkbox input {
+  width: 15px;
+  margin-top: 20px;
+}
 
 .form .btn-group {
-  margin-top: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   font-size: 0;
 }
 

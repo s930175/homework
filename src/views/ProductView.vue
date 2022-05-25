@@ -1,6 +1,6 @@
 <template>
   <a @click="productFilter = 'all'" href="javascript:;">所有商品</a> |
-  <a @click="productFilter = 'buy'" href="javascript:;">收藏商品</a>
+  <a @click="productFilter = 'buy'" href="javascript:;">購物車</a>
   <Carouse></Carouse>
   <Describe
     @choosen="putIntoCart"
@@ -9,26 +9,27 @@
     :="item"
   >
   </Describe>
-    <router-link to="/cart">結帳</router-link>
+  <router-link to="/cart" class="pay">結帳</router-link>
+  <!-- <PayView :count="item.count" v-for="item in showProducts" :key="item.id" :="item"></PayView> -->
   <!-- <router-link to="/cart"><a @click="productFilter='buy'" href="javascript:;">結帳</a></router-link> -->
 </template>
 
 <script>
 import Describe from "../components/DescribeView.vue";
 import Carouse from "../components/CarouselView.vue";
-import Cart from "../components/CartView.vue";
-
+import PayView from "../components/PayView.vue";
 export default {
   components: {
     Describe,
     Carouse,
-    Cart,
+    PayView,
   },
   data() {
     return {
       // choosenProduct: localStorage.setItem("choosenProduct") || [],
       // choosenProduct:[],
       productFilter: "all",
+      cartList:[],
       imgs: [
         {
           id: 1,
@@ -103,11 +104,22 @@ export default {
           return this.imgs;
           break;
         case "buy":
-          // localStorage.setItem()
-
+          //localStorage.setItem("object", "imgs");
+          this.cartList = JSON.stringify(this.imgs);
+          localStorage.setItem("ProductCount", this.cartList);
           return this.imgs.filter((item) => item.count > 0);
       }
-      console.log(item);
+      //console.log(item);
+      //search
+      // if (this.search && this.search.length > 0) {
+      //   var current = [];
+      //   console.log(current)
+      //   current = current.filter(function (item) {
+      //     var find =this.search.toLowerCase();
+      //     var name = item.name.toLowerCase();
+      //     return name.indexOf(find) > -1;
+      //   });
+      // }
     },
     // sum() {
     //   let sum = 0;
@@ -123,7 +135,7 @@ export default {
           item.count = info.count;
         }
       });
-      //console.log(this.imgs)
+      // console.log(this.imgs);
     },
   },
   watch: {},
@@ -139,10 +151,15 @@ img {
   width: 100%;
   border: transparent;
 }
-a{
+a {
   text-decoration: none;
-  color:black;
-  font-family:Arial, Helvetica, sans-serif
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pay {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
 }
 </style>
 

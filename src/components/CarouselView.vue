@@ -137,5 +137,8 @@ img {
 .flip-list-move {
   transition: transform 0.5s;
 }
+.btn{
+  margin: 10px;
+}
 </style>
 

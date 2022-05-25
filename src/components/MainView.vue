@@ -42,9 +42,7 @@ li {
   height: 200px;
   text-align: center;
   line-height: 200px;
-  /* outline: 1px solid #f00; */
   margin: 0 60px -40px;
-  /*960/3-200=120 左右各60*/
   position: relative;
   font-size: 30px;
 }
@@ -56,7 +54,6 @@ li::before {
   height: 100%;
   left: 0;
   top: 0;
-  /* outline: 1px solid #00f; */
   transform: rotate(45deg);
 }
 li:nth-child(n + 4) {
@@ -66,36 +63,38 @@ li:nth-child(n + 7) {
   left: 0;
 }
 .box1::before {
-  background-color: #3ed0cd;
+  background-color: #D8DBE2;
 }
 .box2::before {
-  background-color: #2d887c;
+  background-color: #A9BCD0;
 }
 .box3::before {
-  background-color: #0e8482;
+  background-color: #58A4B0;
 }
 .box4::before {
-  background-color: #3e78d0;
+  background-color: #DBDFFD;
 }
 .box5::before {
-  background-color: #1d539e;
+  background-color: #9BA3EB;
 }
 .box6::before {
-  background-color: #171add;
+  background-color: #646FD4;
 }
 .box7::before {
-  background-color: #d0a93e;
+  background-color: #FAF0D7;
 }
 .box8::before {
-  background-color: #d88116;
+  background-color: #FFD9C0;
 }
 .box9::before {
-  background-color: #d06c3e;
+  background-color: #F4BFBF;
 }
 li:hover {
-  color: #fff;
+  color: #aaa;
+  transition: .5s;
 }
 li:hover::before {
-  background-color: #000;
+  transition: .6s;
+  background-color: #EBD8C3;
 }
 </style>
