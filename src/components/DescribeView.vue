@@ -7,10 +7,11 @@
           黏土人 <strong>{{ name }}</strong>
         </p>
         <p>價錢: {{ price }}</p>
-        <button @click="reductCount">-</button>
+        <p>商品描述: {{ desc }}</p>
+        <button class="btn-count" @click="reductCount">-</button>
         <span>{{ count }}</span>
-        <button @click="addCount">+</button>
-        <button @click="addCart">加到購物車</button>
+        <button class="btn-count" @click="addCount">+</button>
+        <button class="btn-add" @click="addCart">加到購物車</button>
       </div>
     </div>
   </div>
@@ -32,7 +33,7 @@ export default {
       }
     },
     addCount() {
-      if (this.count < 5) {
+      if (this.count < 9) {
         this.count++;
         this.$emit("choosen", { id: this.id, count: this.count,name:this.name,price:this.price });
         this.$emit("cart", { id: this.id, count: this.count, name:this.name,price:this.price, select:this.select });
@@ -65,5 +66,18 @@ img {
 .card {
   vertical-align: middle;
   padding: 10px 5px;
+}
+.btn-count{
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: #eee;
+}
+.btn-add{
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
 }
 </style>

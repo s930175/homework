@@ -9,11 +9,14 @@
   <div>
     <h1>你的訂單</h1>
     <ul class="order">
-      <li v-for="shop in addcartList" :key="shop.id">商品名:{{shop.name}} 價格:{{shop.price}} 數量:{{shop.count}}  <i @click="removed" class="fa-solid fa-xmark"></i></li>
+      <li v-for="shop in addcartList" :key="shop.id">
+      <strong>商品名:</strong>{{shop.name}}      
+      <strong>價格:</strong>{{shop.price}}       
+      <strong>數量:</strong>{{shop.count}}  <i @click="removed" class="fa-solid fa-xmark"></i></li>
     </ul>
   </div>
-  <button @click="clearCart">清除</button>
-  <button @click="pay">結帳</button>
+  <button class="order-btn" @click="clearCart">清除</button>
+  <button class="order-btn" @click="pay">結帳</button>
   <ol class="list d-none">
     <li>
       <i class="fa-solid fa-1"></i>
@@ -41,6 +44,7 @@
 <script>
 import Describe from "../components/DescribeView.vue";
 import PayView from "@/components/PayView.vue";
+import { $dataMetaSchema } from "ajv";
 export default {
   components: {
     Describe,
@@ -92,6 +96,7 @@ export default {
       this.addcartList.forEach(function (shop) {
         sum += shop.price * shop.count;
         confirm(`總共是${sum}元!!!`);
+        $(".list").removeClass('d-none')
       });
     },
     removed(){
@@ -166,6 +171,19 @@ a {
 }
 .fa-xmark{
   padding-left: 10px;
+}
+.order{
+  padding: 30px;
+}
+.order strong{
+  padding-left: 50px;
+}
+.order-btn{
+  border: 1px solid #aaa;
+  border-radius: 30px;
+  background-color: #eee;
+  padding: 10px;
+  margin-top: 400px;
 }
 </style>
 

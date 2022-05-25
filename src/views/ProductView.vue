@@ -9,7 +9,7 @@
     :="item"
   >
   </Describe>
-  <router-link to="/cart" class="pay">結帳</router-link>
+  <router-link to="/cart" class="pay" @click="haha">結帳</router-link>
   <!-- <PayView :count="item.count" v-for="item in showProducts" :key="item.id" :="item"></PayView> -->
   <!-- <router-link to="/cart"><a @click="productFilter='buy'" href="javascript:;">結帳</a></router-link> -->
 </template>
@@ -29,7 +29,7 @@ export default {
       // choosenProduct: localStorage.setItem("choosenProduct") || [],
       // choosenProduct:[],
       productFilter: "all",
-      cartList:[],
+      cartList: [],
       imgs: [
         {
           id: 1,
@@ -104,7 +104,6 @@ export default {
           return this.imgs;
           break;
         case "buy":
-          //localStorage.setItem("object", "imgs");
           this.cartList = JSON.stringify(this.imgs);
           localStorage.setItem("ProductCount", this.cartList);
           return this.imgs.filter((item) => item.count > 0);
@@ -136,6 +135,10 @@ export default {
         }
       });
       // console.log(this.imgs);
+    },
+    haha() {
+      this.cartList = JSON.stringify(this.imgs);
+      localStorage.setItem("ProductCount", this.cartList);
     },
   },
   watch: {},
